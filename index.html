@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta charset="utf-8">
+     <meta name="google-site-verification" content="AqkmW1vUJ8k9bTqEByYbaQCcAsAYtOKLDs3fhmnrDjI" />
+    <title>The fourth of july.</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="text">
+  <p class="main">Oh</p>
+</div>
+<div class="text">
+  <p class="expletive">CRASH!</p>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+var basics = ["Oh", 
+  "my", 
+  "it's",
+  "the",
+  "Fourth",
+  "of",
+  "July"];
+
+var sounds = ["CRASH!", 
+  "BASH!", 
+  "BANG",
+  "ZANG!",
+  "WHOOSH!",
+  "BAROOM!",
+  "WHEW!"];
+
+var randomDegrees = [];
+  for (var i = 0, l = 7; i < l; i++) {
+      rand = Math.floor(Math.random() * 180) - 90
+      randomDegrees.push(rand)
+  };
+// console.log(randomDegrees)
+
+
+$(document).on("scroll", function(){
+  var pixels = $(document).scrollTop();
+  // console.log(pixels);
+
+  var step = Math.round(pixels / 155);
+  console.log("step " + step);
+
+  var font = step*25 + 80;
+  $(".expletive").css("font-size", font);
+
+  var item = Math.round(step/2)
+  // console.log("item " + item)
+
+  var basicWord = basics[item];
+  var soundWord = sounds[item-1];
+  // console.log(soundWord)
+
+  var degrees = randomDegrees[item];
+  // console.log(degrees)
+
+  if (step%2 == 0) {
+    $(".main").html(basicWord)
+  }
+  if (step%2 == 1) {
+    $(".expletive").css("opacity","1");
+    $(".expletive").html(soundWord);
+    $(".expletive").css("transform", "rotate(" + degrees + "deg)")
+  } else {
+    $(".expletive").css("opacity","0");
+  }
+  
+})
+
+</script>
+</body>
+
+</html>
