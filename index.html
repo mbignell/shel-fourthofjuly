@@ -14,10 +14,9 @@
 <div class="text">
   <p class="main">Oh</p>
 </div>
-<div class="text">
+<div class="text test">
   <p class="expletive">CRASH!</p>
 </div>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -44,12 +43,9 @@ var randomDegrees = [];
       rand = Math.floor(Math.random() * 180) - 90
       randomDegrees.push(rand)
   };
-// console.log(randomDegrees)
-
 
 $(document).on("scroll", function(){
   var pixels = $(document).scrollTop();
-  // console.log(pixels);
 
   var step = Math.round(pixels / 155);
   console.log("step " + step);
@@ -57,15 +53,12 @@ $(document).on("scroll", function(){
   var font = step*25 + 80;
   $(".expletive").css("font-size", font);
 
-  var item = Math.round(step/2)
-  // console.log("item " + item)
+  var item = Math.round(step/2);
 
   var basicWord = basics[item];
   var soundWord = sounds[item-1];
-  // console.log(soundWord)
 
   var degrees = randomDegrees[item];
-  // console.log(degrees)
 
   if (step%2 == 0) {
     $(".main").html(basicWord)
